@@ -1,6 +1,10 @@
 # Sample micronaut application to demo JWT auth
 
+The app has an endpoint `GET /resource`
 
+In order to access the endpoint you need to get a JWT token and sessionId cookie.
+
+You will get them by sending a request to `POST /login` with client credentials.
 
 ## Feature http-client documentation
 
