@@ -27,7 +27,8 @@ public class AppJWTClaimsValidator implements GenericJwtClaimsValidator {
         String userAgent = (String) claimsSet.getClaim("user_agent");
         Optional<HttpRequest<Object>> httpRequestOptional = ServerRequestContext.currentRequest();
         if (httpRequestOptional.isPresent()) {
-            String sessionIdInRequest = httpRequestOptional.get().getCookies().get("sessionId").getValue();
+            String sessionIdInRequest = httpRequestOptional.get().getCookies()!=null ?
+                    httpRequestOptional.get().getCookies().get("sessionId").getValue():null;
             String userAgentInRequest = httpRequestOptional.get().getHeaders().get("user-agent");
             if (sessionId.equals(sessionIdInRequest) &&
                     userAgent.equalsIgnoreCase(userAgentInRequest)) {
